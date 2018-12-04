@@ -1,0 +1,52 @@
+<select style="text-align: center" onchange={{action "selectedElement" value="target.value"}}>
+    <option value="Semaine" selected="selected">Semaine En Cours</option>
+    <option value="Mois">Mois</option>
+    <option value="Annee">Année</option>
+    <option value="Personnalise">Personnalisé</option>
+</select>
+
+{{#if selectedMonth}}
+<select style="text-align: center" onchange={{action "selectedElementOption" value="target.value"}}>
+    <option value="" selected="selected">{{currentMonth}}</option>
+    <option value="8">Septembre</option>
+    <option value="9">Octobre</option>
+    <option value="10">Novembre</option>
+    <option value="11">Décembre</option>
+    <option value="0">Janvier</option>
+    <option value="1">Février</option>
+    <option value="2">Mars</option>
+    <option value="3">Avril</option>
+    <option value="4">Mai</option>
+    <option value="5">Juin</option>
+    <option value="6">Juillet</option>
+    <option value="7">Août</option>
+</select>
+{{/if}}
+
+{{#if selectedYears}}
+<select style="text-align: center" onchange={{action "selectedElementOption" value="target.value"}}>
+    <option value="{{currentYear}}" selected="selected">{{currentYear}}</option>
+    {{#each years as |year|}}
+    <option value="{{year}}">{{year}}</option>
+    {{/each}}
+</select>
+{{/if}}
+
+<div class="chart-canvas-container">
+    <canvas class="test-chart"></canvas>
+</div>
+
+{{#if pickDate}}
+<br />
+<div style="text-align: center">
+    <div class="center-block-input">
+        {{input type="date" value = dateBeginInput placeholder="Date de début"}}
+    </div>
+    <div class="center-block-input">
+        {{input type="date" value = dateEndInput placeholder="Date de fin"}}
+    </div>
+    <br />
+</div>
+<button class="btn btn-primary big center-block" {{action "getTopicsStatsByDates"}}> Valider </button>
+<br />
+{{/if}}

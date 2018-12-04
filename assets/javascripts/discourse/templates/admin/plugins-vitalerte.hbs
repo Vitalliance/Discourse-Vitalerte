@@ -1,0 +1,61 @@
+<div>
+  <h2 style="text-align: center; text-decoration: underline;" class="centre">VITALERTE SETTINGS</h2>
+  <br />
+  <select style="text-align: center;" onchange={{action "setSelectionCustomer" value="target.value"}}>
+    <option value="" selected="selected">Ajouter un utilisateur</option>
+    {{#each usernames as |username|}}
+    <option value={{username}}>{{username}}</option>
+    {{/each}}
+  </select>
+
+  <select style="text-align: center; display: block;" onchange={{action "setSelectionGroup" value="target.value"}}>
+    <option value="" selected="selected">Ajouter un groupe</option>
+    {{#each groups as |group|}}
+    <option value={{group}}>{{group}}</option>
+    {{/each}}
+  </select>
+
+  <br />
+  <br />
+  <br />
+
+  <h3 style="text-align: center; text-decoration: underline;"> Utilisateurs </h3>
+  <div class="row">
+    <div class="big-row center-block">
+      <table>
+        <tr>
+          <th style="text-align: center;">Utilisateur accès</th>
+        </tr>
+        {{#each-in usernames_active as |keys value|}}
+        <tr>
+          <td style="text-align: center;">{{value.name}} <button {{action "delete_people_by_id" value.id}} class="widget-button btn-flat delete no-text btn-icon"
+              aria-label="Supprimer utilisateur" title="Supprimer utilisateur"><i class="fa fa-trash-o d-icon d-icon-trash-o"
+                aria-hidden="true"></i></button> </td>
+        </tr>
+        {{/each-in}}
+      </table>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <h3 style="text-align: center; text-decoration: underline;"> Groupes </h3>
+  <div class="row">
+    <div class="big-row center-block">
+      <table>
+        <tr>
+          <th style="text-align: center;">Groupe accès</th>
+        </tr>
+        {{#each-in groupes_active as |keys value|}}
+        <tr>
+          <td style="text-align: center;">{{value.name}} <button {{action "delete_group_by_id" value.id}} class="widget-button btn-flat delete no-text btn-icon"
+              aria-label="Supprimer ce groupe" title="Supprimer ce groupe"><i class="fa fa-trash-o d-icon d-icon-trash-o"
+                aria-hidden="true"></i></button> </td>
+        </tr>
+        {{/each-in}}
+      </table>
+    </div>
+  </div>
+
+
+</div>
